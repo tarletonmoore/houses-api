@@ -37,4 +37,10 @@ class HousesController < ApplicationController
       render json: { errors: house.errors.full_messages }, status: :bad_request
     end
   end
+
+  def destroy
+    @house = House.find_by(id: params[:id])
+    @house.destroy
+    render json: { message: "House successfully destroyed!" }
+  end
 end
